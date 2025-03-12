@@ -43,5 +43,13 @@ public class CarController : MonoBehaviour
             Debug.Log("Has chocado con un meteorito");
             GameManager.Instance.DecreaseLives();
         }
+
+        if (collision.gameObject.CompareTag("Finish"))
+        {
+            Debug.Log("Has llegado a la zona segura ");
+            GameManager.Instance.onGameOver=false;
+        }
+
+
     }
 }
