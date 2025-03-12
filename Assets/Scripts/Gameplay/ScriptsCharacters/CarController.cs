@@ -8,19 +8,31 @@ public class CarController : MonoBehaviour
     [SerializeField] private float speed = 30f;
 
     private void Start()
+    {}
+
+    void Update()
     {
+
+        if (!GameManager.Instance.isGameOver)
+        {
+            horizontalInput = Input.GetAxis("Horizontal");
+            forwardInput = Input.GetAxis("Vertical");
+
+
+            transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
+
+            transform.Rotate(Vector3.up, turnSpeed * horizontalInput * Time.deltaTime);
+        }
 
     }
 
-    void Update() {
+    private void OnCollisionEnter(Collision collision)
+    {
 
-        horizontalInput = Input.GetAxis("Horizontal");
-        forwardInput = Input.GetAxis("Vertical");
-
-
-        transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
-
-        transform.Rotate(Vector3.up, turnSpeed * horizontalInput * Time.deltaTime);
-        
+        if (collision.gameObject.CompareTag("Meteor"))
+        {
+            Debug.Log("Has chocado con un meteorito");
+            GameManager.Instance.DecreaseLives();
+        }
     }
 }

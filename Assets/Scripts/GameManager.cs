@@ -6,6 +6,13 @@ public class GameManager : MonoBehaviour
 public static GameManager Instance {  get; private set; }
     private bool isPaused;
 
+    [Header("Game Settings")]
+    public int startLives = 3;
+
+    private int currentLives;
+    private float gameTime;
+    public bool isGameOver = false;
+
     private void Awake()
     {
         if (Instance == null)
@@ -19,6 +26,44 @@ public static GameManager Instance {  get; private set; }
             Destroy(this.gameObject);
         }
     }
+    
+    void Start()
+    {
+        // Inicializaci√≥n
+        currentLives = startLives;
+        gameTime = 0f;
+        isGameOver = false;
+    }
+    
+    void Update()
+    {
+        if (!isGameOver)
+        {
+            // Actualizar tiempo
+            gameTime += Time.deltaTime;
+        }
+    }
+    
+    //**  Disminuir Vidas
+    public void DecreaseLives(int amount = 1)
+    {
+        if (isGameOver) return; 
+
+        currentLives -= amount;
+
+        if (currentLives <= 0)
+        {
+            GameOver();
+        }
+    }
+    
+    //**  Game Over
+    void GameOver()
+    {
+        isGameOver = true;
+        Debug.Log("Game Over");
+    }
+
     // nameScene: Nombre de la escena
     public void LoadSceneByName(string nameScene)
     {
@@ -43,7 +88,7 @@ public static GameManager Instance {  get; private set; }
         }
         else
         {
-            Debug.LogWarning("No hay m·s escenas. °Has completado el juego!");
+            Debug.LogWarning("No hay mÔøΩs escenas. ÔøΩHas completado el juego!");
             ReloadCurrentScene(); // Recargar la primera escena
         }
     }
