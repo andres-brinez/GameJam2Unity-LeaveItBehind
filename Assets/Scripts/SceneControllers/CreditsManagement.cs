@@ -10,6 +10,6 @@ public class CreditsManagement : MonoBehaviour
     }
     public void clicSound()
     {
-        AudioManager.Instance.PlayFX("start");
+        AudioManager.Instance.PlayFX("ClicAlerta");
     }
 }
