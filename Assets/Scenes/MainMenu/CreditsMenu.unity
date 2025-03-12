@@ -1187,7 +1187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollRect: {fileID: 1050830717}
-  scrollSpeed: 0.05
+  scrollSpeed: 0.5
 --- !u!1 &1182320011
 GameObject:
   m_ObjectHideFlags: 0
@@ -1308,8 +1308,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 734226927}
   m_HandleRect: {fileID: 734226926}
   m_Direction: 0
-  m_Value: -0.0000018838033
-  m_Size: 0.9449355
+  m_Value: 0.00000094189807
+  m_Size: 0.94493526
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1468,7 +1468,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -0.00016952404}
   m_SizeDelta: {x: 16.2, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1789884286
@@ -1505,7 +1505,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.09185791, y: 58.50002}
+  m_AnchoredPosition: {x: 0.09185791, y: -761}
   m_SizeDelta: {x: 248.6, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1789884288
@@ -1528,17 +1528,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos
-    de texto. Lorem Ipsum ha\n\n\n sido el texto de relleno est\xE1ndar de las industrias
-    desde el a\xF1o 1500, cuando un impresor (N. del T.\n\n \npersona que se dedica
-    a la imprenta) desconocido us\xF3 una galer\xEDa de textos y los mezcl\xF3 de
-    tal\n\n\n manera que logr\xF3 hacer un libro de textos especimen. No s\xF3lo
-    sobrevivi\xF3 500 a\xF1os, sino que tambien ingres\xF3 como texto de relleno
-    en \n\n\ndocumentos electr\xF3nicos, quedando esencialmente igual al original.
-    Fue popularizado en los 60s con la creaci\xF3n de las hojas \"Letraset\", las
-    cuales contenian pasajes de Lorem Ipsum, y m\xE1s\n\n\n recientemente con software
-    de autoedici\xF3n, como por ejemplo Aldus PageMaker, el cual incluye versiones
-    de Lorem Ipsum."
+  m_text: "DEVELOPED BY:\r\nAndr\xE9s Bri\xF1ez,\r\nYeison Martinez,\r\nAndrea Ria\xF1o\r\n\r\nROLES:\r\n\r\nAndr\xE9s
+    Bri\xF1ez: Developer, Environment Artist, Game Design\r\n\r\nYeison Martinez:
+    Environment Artist, VFX, Game Design\r\n\r\nAndrea Ria\xF1o: UI Design, Art,
+    Developer, Sound Design\r\n\r\nMUSIC AND SOUND:\r\nSound resources downloaded
+    from freesound.org.\r\n\r\nART AND VISUAL ASSETS:\r\n\r\nUI Design elements from
+    Freepik.\r\n\r\nEnvironment assets from the Unity Asset Store.\r\n\r\nCar model
+    from Fab Epic Games.\r\n\r\nTOOLS USED:\r\n\r\nUnity\r\n\r\nPhotoshop\r\n\r\nIllustrator\r\n\r\nSPECIAL
+    THANKS:\r\nThis project was developed as part of the \"YOU MUST LEAVE IT BEHIND\"
+    Game Jam hosted by Generation Colombia.\r\n\r\nPUBLISHING:\r\nPublished on itch.io
+    by Andrea Ria\xF1o, Andr\xE9s Bri\xF1ez, and Yeison Martinez.\r\n\r\nTHANK YOU
+    FOR PLAYING!\r\nWe hope you enjoyed the game. Your support and feedback mean
+    the world to us!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 52047f4cdc6fb054b99a7302454966e1, type: 2}
   m_sharedMaterial: {fileID: -4677094585612013857, guid: 52047f4cdc6fb054b99a7302454966e1, type: 2}
@@ -1548,8 +1549,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4289208668
-  m_fontColor: {r: 0.359307, g: 0.12771448, b: 0.6603774, a: 1}
+    rgba: 4286257476
+  m_fontColor: {r: 0.26521102, g: 0.097588114, b: 0.4811321, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1566,8 +1567,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 13.17
-  m_fontSizeBase: 13.17
+  m_fontSize: 14.5
+  m_fontSizeBase: 14.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1604,7 +1605,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: -814.6665, z: 0, w: -41.485817}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1680,8 +1681,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 981510959}
   m_HandleRect: {fileID: 981510957}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.717
+  m_Value: 1.0000018
+  m_Size: 0.71699995
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
