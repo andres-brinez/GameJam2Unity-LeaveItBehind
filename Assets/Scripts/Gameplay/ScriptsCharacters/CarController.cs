@@ -4,30 +4,39 @@ public class CarController : MonoBehaviour
 {
     private float horizontalInput, forwardInput;
 
-    [SerializeField] private float turnSpeed = 60f; // Velocidad de giro
-    [SerializeField] private float speed = 30f;
+    [SerializeField] private float turnSpeed = 100f; // Velocidad de giro
+    [SerializeField] private float speed = 10f;
+    private Rigidbody rb;
 
     private void Start()
-    {}
-
-    void Update()
     {
+        rb = GetComponent<Rigidbody>();
 
+        // Configuración recomendada para evitar atravesar objetos
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
+        rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+    }
+
+    void FixedUpdate() // Usar FixedUpdate para físicas
+    {
         if (!GameManager.Instance.isGameOver)
         {
-            horizontalInput = Input.GetAxis("Horizontal");
-            forwardInput = Input.GetAxis("Vertical");
+            horizontalInput = Input.GetAxis("Horizontal"); // Movimiento lateral
+            forwardInput = Input.GetAxis("Vertical"); // Movimiento adelante/atrás
 
+            // Movimiento corregido con MovePosition
+            Vector3 moveDirection = transform.forward * forwardInput * speed * Time.fixedDeltaTime;
+            rb.MovePosition(rb.position + moveDirection);
 
-            transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
-
-            transform.Rotate(Vector3.up, turnSpeed * horizontalInput * Time.deltaTime);
+            // Rotación corregida sin Quaternion
+            float nuevaRotacionY = transform.eulerAngles.y + (horizontalInput * turnSpeed * Time.fixedDeltaTime);
+            transform.eulerAngles = new Vector3(0, nuevaRotacionY, 0);
         }
-
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Has chocado con: " + collision.gameObject.name);
 
         if (collision.gameObject.CompareTag("Meteor"))
         {
