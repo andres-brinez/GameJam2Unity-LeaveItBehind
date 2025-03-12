@@ -1846,8 +1846,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: BACK
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0662970df26591b4792ff46073c46926, type: 2}
-  m_sharedMaterial: {fileID: -6355162512075376067, guid: 0662970df26591b4792ff46073c46926, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 68ead6bab16dffa4c83396b062016818, type: 2}
+  m_sharedMaterial: {fileID: 8423049650251448206, guid: 68ead6bab16dffa4c83396b062016818, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2927,7 +2927,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -120, y: -53}
-  m_SizeDelta: {x: 125, y: 60}
+  m_SizeDelta: {x: 125, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1828162611
 MonoBehaviour:
@@ -2976,6 +2976,18 @@ MonoBehaviour:
       - m_Target: {fileID: 900754812}
         m_TargetAssemblyTypeName: OptionMenu, Assembly-CSharp
         m_MethodName: exitMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 900754812}
+        m_TargetAssemblyTypeName: OptionMenu, Assembly-CSharp
+        m_MethodName: clicSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
