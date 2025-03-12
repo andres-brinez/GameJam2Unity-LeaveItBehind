@@ -1,13 +1,18 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-public static GameManager Instance {  get; private set; }
+    public static GameManager Instance { get; private set; }
     private bool isPaused;
+    public event Action<float> onTimeChanged; // Evento para actualizar el UI del tiempo
+    public event Action<int> onLivesChanged;  // Evento para actualizar el UI de vidas
+    public event Action<bool> onGameOver;     // Evento para manejar el Game Over
 
     [Header("Game Settings")]
     public int startLives = 3;
+    public float startTime = 120f; // Tiempo inicial de cuenta regresiva
 
     private int currentLives;
     private float gameTime;
@@ -26,41 +31,57 @@ public static GameManager Instance {  get; private set; }
             Destroy(this.gameObject);
         }
     }
-    
+
     void Start()
     {
-        // Inicialización
-        currentLives = startLives;
-        gameTime = 0f;
-        isGameOver = false;
+        StartLevel(); // Solo iniciar nivel si no estamos en el menú
     }
-    
+
     void Update()
     {
         if (!isGameOver)
         {
-            // Actualizar tiempo
-            gameTime += Time.deltaTime;
+            gameTime -= Time.deltaTime;
+            if (gameTime <= 0)
+            {
+                gameTime = 0;
+                GameOver(false); // Derrota por tiempo agotado
+            }
+            onTimeChanged?.Invoke(gameTime); // Notificar cambio de tiempo
         }
     }
-    
-    //**  Disminuir Vidas
-    public void DecreaseLives(int amount = 1)
+
+    public void StartLevel()
     {
-        if (isGameOver) return; 
+        currentLives = startLives;
+        gameTime = startTime;
+        isGameOver = false;
+        Time.timeScale = 1;
+
+        onTimeChanged?.Invoke(gameTime);
+        onLivesChanged?.Invoke(currentLives);
+        //AudioManager.Instance?.PlayMusic(AudioManager.Instance.Music); // Reproducir música del juego
+    }
+
+        //**  Disminuir Vidas
+        public void DecreaseLives(int amount = 1)
+    {
+        if (isGameOver) return;
 
         currentLives -= amount;
+        onLivesChanged?.Invoke(currentLives);
 
         if (currentLives <= 0)
         {
-            GameOver();
+            GameOver(false); // Derrota por falta de vidas
         }
     }
-    
+
     //**  Game Over
-    void GameOver()
+    void GameOver(bool hasWon)
     {
         isGameOver = true;
+        onGameOver?.Invoke(hasWon);
         Debug.Log("Game Over");
     }
 
@@ -72,7 +93,7 @@ public static GameManager Instance {  get; private set; }
 
     public void ReloadCurrentScene()
     {
-    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     // Carga la siguiente escena por index
@@ -98,6 +119,15 @@ public static GameManager Instance {  get; private set; }
         isPaused = !isPaused;
         Time.timeScale = isPaused ? 0 : 1;
     }
+    public void ResetGame()
+    {
+        gameTime = startTime;  // Reiniciar el tiempo con la variable correcta
+        currentLives = startLives;  // Reiniciar las vidas correctamente
+        isGameOver = false;  // Asegurar que el juego no esté en estado de Game Over
+
+        onTimeChanged?.Invoke(gameTime);
+        onLivesChanged?.Invoke(currentLives);
+    }
     public void OpenOptionsMenu()
     {
         SceneManager.LoadScene("OptionMenu", LoadSceneMode.Additive);
@@ -107,6 +137,17 @@ public static GameManager Instance {  get; private set; }
     {
         SceneManager.LoadScene("CreditsMenu", LoadSceneMode.Additive);
     }
+    public float GetRemainingTime()
+    {
+        return gameTime;
+    }
+
+    public int GetCurrentLives()
+    {
+        return currentLives;
+
+    }
+    
 }
 /*Forma de utilizar funciones en otros scripts, llamar escenas por nombres
 GameManager.instance.LoadSceneByName("Menu") */
